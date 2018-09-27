@@ -1,0 +1,17 @@
+
+*.db
+.DS_Store
+
+node_modules
+
+# SASS
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
+
+# solutions
+solution.*
+solutions.*
+
+*.code-workspace

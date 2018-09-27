@@ -1,0 +1,17 @@
+
+/* usa uma variavel sass para definir a cor da border */
+.box {
+  border: 1px solid #ccc;
+}
+
+
+/* cria o sass para gerar o seguinte css */
+.foo {
+  background: orange; }
+
+  .foo p {
+    color: blue;
+    font-size: 14px;
+    font-weight: bold; }
+
+
