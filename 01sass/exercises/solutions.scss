@@ -31,14 +31,18 @@ html {
 
 // descobre o que deves usar para gerar o css
 // Our reusable default presentational class
-.user-dialog-box {
+%user-dialog-box-shared {
   border: 10px solid white;
   padding: 10px;
   box-shadow: 0 0 30px rgba(0,0,0,0.5);
 }
 
+.user-dialog-box {
+  @extend %user-dialog-box-shared;
+}
+
 .alert-winning-user {
-  @extend .user-dialog-box;
+  @extend %user-dialog-box-shared;
   border-color: white;
 }
 

@@ -42,6 +42,7 @@
       // 1
       namesHeader.style.color='blue';
       // OU namesHeader.setAttribute('style', 'color: blue');
+      // ou numa linha apenas, recomendacao: criar apenas as variaveis necessarias
       
       const menu = document.getElementById("mainMenu");
       // 2
@@ -56,11 +57,15 @@
 
       // 4
       const as = document.querySelectorAll('.menu-item');
+      //const as = document.getElementsByClassName('.menu-item'); // erro: por nao retornar nodeList, mas sim HTMLCollection, nao dá para percorrer com for
       const result = document.getElementById('result');
       console.log(as);
       as.forEach(element => {
         result.appendChild(element);
       });
+      /*for(var i=0; i<as.length; i++){
+        result.appendChild(as[i]);
+      };*/
 
       // 5
       let name = document.getElementById('name');
