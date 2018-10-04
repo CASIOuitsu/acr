@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+  <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+</head>
+<body>
+    
+    <ons-page>
+        <ons-toolbar>
+          <div class="center">Home</div>
+        </ons-toolbar>
+      
+        <ons-tabbar swipeable position="auto">
+          <ons-tab page="tab1.html" label="Home" icon="ion-home, material:md-home" active>
+          </ons-tab>
+          <ons-tab page="tab2.html" label="Adicionar" icon="md-plus" >
+          </ons-tab>
+          <ons-tab page="tab3.html" label="Contactar" icon="fa-envelope" >
+          </ons-tab>
+        </ons-tabbar>
+      </ons-page>
+      
+      <template id="tab1.html">
+        <ons-page id="Tab1">
+          <ons-toolbar>
+            <div class="center">List</div>
+          </ons-toolbar>
+            
+          <ons-list>
+              <ons-list-header>Default</ons-list-header>
+              <ons-list-item>Item A</ons-list-item>
+              <ons-list-item>Item B</ons-list-item>
+          </ons-list>
+
+          <ons-fab position="bottom right" id="addBtn">
+              <ons-icon icon="md-plus"></ons-icon>
+          </ons-fab>
+
+        </ons-page>
+      </template>
+      
+      <template id="tab2.html">
+        <ons-page id="Tab2">
+          <p style="text-align: center;">
+              Adicionar Item
+          </p>
+          <div style="text-align: center; margin-top: 30px;">
+              <p>
+                <ons-input id="name" modifier="underbar" placeholder="Item name" float></ons-input>
+              </p>
+              <p style="margin-top: 30px;">
+                <ons-button onclick="addItem()">Adicionar</ons-button>
+              </p>
+            </ons-input>
+          </div>           
+        </ons-page>
+      </template>
+
+      <template id="tab3.html">
+        <ons-page id="Tab3">
+            <p style="text-align: center;">
+                Contacte-nos:
+              </p>
+              <div style="text-align: center; margin-top: 30px;">
+                  <p>
+                    <ons-input id="cname" modifier="underbar" placeholder="Nome" float></ons-input>
+                  </p>
+                  <p>
+                    <ons-input id="email" modifier="underbar" type="email" placeholder="Email" float></ons-input>
+                  </p>
+                  <p>
+                  <textarea id="message" placeholder="message" float cols="30" rows="3"></textarea>
+                  </p>
+                  <small>
+                  Todos os campos são obrigatórios
+                  </small>
+                  <p style="margin-top: 30px;">
+                    <ons-button onclick="contact()">Enviar</ons-button>
+                  </p>
+                </ons-input>
+              </div>
+          </ons-page>
+      </template>
+
+<script>
+  // add
+  var addItem = function() {
+    var name = document.getElementById('name').value;
+
+    if (name) {
+      ons.notification.toast('Item adcionado com sucesso!', { timeout: 1500 });
+    } else {
+      ons.notification.alert('Dados em falta ou incorrectos');
+    }
+    addToList(name);
+    name.value = '';
+  };
+
+  var addToList = function(name, email, message) {
+    var list = document.querySelector('ons-list');
+    item = document.createElement("ons-list-item");
+    item.textContent = name;
+    list.appendChild(item);
+  };
+
+  ons.ready(function() {
+    // change tab
+    document.addEventListener('init', function(event) {
+      document.querySelector('#addBtn').onclick = function() {
+        document.querySelector('ons-tabbar').setActiveTab(1);
+      };
+    });
+  });
+
+  // contact
+  var contact = function() {
+    var name = document.getElementById('cname').value;
+    var email = document.getElementById('email').value;
+    var message = document.getElementById('message').value;
+
+    if (name && email && message) {
+      ons.notification.toast('Messagem enviada com sucesso!', { timeout: 1500 });
+    } else {
+      ons.notification.alert('Dados em falta ou incorrectos');
+    }
+    //addToMessages(name, email, message);
+    name, email, message = '';
+  };
+
+  var addToMessages = function(name, email, message) {
+    var msgDiv = document.getElementById('messages');
+    msg = document.createElement("p");
+    msg.textContent = name + '; ' + email + '; ' + message;
+    msgDiv.appendChild(msg);
+  };
+
+
+  document.addEventListener('prechange', function(event) {
+    document.querySelector('ons-toolbar .center')
+      .innerHTML = event.tabItem.getAttribute('label');
+  });
+</script>
+</body>
+</html>
