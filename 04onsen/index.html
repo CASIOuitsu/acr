@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+  <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+</head>
+<body>
+
+          <ons-splitter>
+            <ons-splitter-side id="menu" page="sidemenu.html" swipeable side="left" collapse="" width="260px"></ons-splitter-side>
+            <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
+          </ons-splitter>
+      
+      <template id="home.html">
+        <ons-page>
+          <ons-toolbar>
+            <div class="left">
+              <ons-toolbar-button onclick="fn.open()">
+                <ons-icon icon="md-menu"></ons-icon>
+              </ons-toolbar-button>
+            </div>
+            <div class="center">
+              Main
+            </div>
+          </ons-toolbar>
+          <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+            Swipe right to open the menu!
+          </p>
+        </ons-page>
+      </template>
+
+      <template id="sidemenu.html">
+          <ons-page>
+        
+            <ons-list-title style="margin-top: 10px">Components</ons-list-title>
+            <ons-list>
+              <ons-list-item onclick="fn.loadLink('/hello.html')">
+                <div class="left">
+                  <ons-icon fixed-width class="list-item__icon" icon="ion-document-text"></ons-icon>
+                </div>
+                <div class="center">
+                  Hello
+                </div>
+                <div class="right">
+                    <ons-icon icon="fa-link"></ons-icon>
+                </div>
+              </ons-list-item>
+              <ons-list-item onclick="fn.loadLink('/input.html')">
+                <div class="left">
+                  <ons-icon fixed-width class="list-item__icon" icon="ion-document-text"></ons-icon>
+                </div>
+                <div class="center">
+                  Input
+                </div>
+                <div class="right">
+                    <ons-icon icon="fa-link"></ons-icon>
+                </div>
+              </ons-list-item>
+              <ons-list-item onclick="fn.loadLink('/carousel.html')">
+                <div class="left">
+                  <ons-icon fixed-width class="list-item__icon" icon="ion-document-text"></ons-icon>
+                </div>
+                <div class="center">
+                  Carousel
+                </div>
+                <div class="right">
+                    <ons-icon icon="fa-link"></ons-icon>
+                </div>
+              </ons-list-item>
+            </ons-list>
+
+            <ons-list-title style="margin-top: 10px">Multiple pages</ons-list-title>
+            <ons-list>
+                <ons-list-item onclick="fn.loadLink('/multi/navigator.html')">
+                  <div class="left">
+                    <ons-icon fixed-width class="list-item__icon" icon="ion-document-text"></ons-icon>
+                  </div>
+                  <div class="center">
+                    Navigator
+                  </div>
+                  <div class="right">
+                      <ons-icon icon="fa-link"></ons-icon>
+                  </div>
+                </ons-list-item>
+                <ons-list-item onclick="fn.loadLink('/multi/tabs.html')">
+                  <div class="left">
+                    <ons-icon fixed-width class="list-item__icon" icon="ion-document-text"></ons-icon>
+                  </div>
+                  <div class="center">
+                    Tabs
+                  </div>
+                  <div class="right">
+                      <ons-icon icon="fa-link"></ons-icon>
+                  </div>
+                </ons-list-item>
+                <ons-list-item onclick="fn.loadLink('/multi/kitchen.html')">
+                  <div class="left">
+                    <ons-icon fixed-width class="list-item__icon" icon="ion-document-text"></ons-icon>
+                  </div>
+                  <div class="center">
+                    Kitchen
+                  </div>
+                  <div class="right">
+                      <ons-icon icon="fa-link"></ons-icon>
+                  </div>
+                </ons-list-item>
+                <ons-list-item onclick="fn.loadLink('/multi/nav-sep.html')">
+                  <div class="left">
+                    <ons-icon fixed-width class="list-item__icon" icon="ion-document-text"></ons-icon>
+                  </div>
+                  <div class="center">
+                    Navigator Separate
+                  </div>
+                  <div class="right">
+                      <ons-icon icon="fa-link"></ons-icon>
+                  </div>
+                </ons-list-item>
+                <ons-list-item onclick="fn.loadLink('/multi/tabs-sep.html')">
+                  <div class="left">
+                    <ons-icon fixed-width class="list-item__icon" icon="ion-document-text"></ons-icon>
+                  </div>
+                  <div class="center">
+                    Tabs Separate
+                  </div>
+                  <div class="right">
+                      <ons-icon icon="fa-link"></ons-icon>
+                  </div>
+                </ons-list-item>
+              </ons-list>
+              
+            <script>
+              ons.getScriptPage().onInit = function() {
+                // Set ons-splitter-side animation
+                this.parentElement.setAttribute('animation', ons.platform.isAndroid() ? 'overlay' : 'reveal');
+                fn.open();
+              };
+            </script>
+        
+            <style>
+              .profile-pic {
+                width: 200px;
+                background-color: #fff;
+                margin: 20px auto 10px;
+                border: 1px solid #999;
+                border-radius: 4px;
+              }
+        
+              .profile-pic > img {
+                display: block;
+                max-width: 100%;
+              }
+        
+              ons-list-item {
+                color: #444;
+              }
+            </style>
+          </ons-page>
+        </template>
+
+      <style>
+        ons-splitter-side[animation=overlay] {
+          border-left: 1px solid #bbb;
+        }
+      </style>
+  
+<script>
+window.fn = {};
+
+window.fn.open = function() {
+  var menu = document.getElementById('menu');
+  menu.open();
+};
+
+window.fn.loadLink = function (url) {
+  window.open(url, '_blank');
+};
+</script>
+
+</body>
+</html>
