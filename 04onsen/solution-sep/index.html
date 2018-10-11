@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+  <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+  <!--script src="https://unpkg.com/jquery/dist/jquery.min.js"></script-->
+</head>
+<body>
+
+  <ons-navigator id="myNavigator">
+    <ons-page>
+      <ons-toolbar>
+        <div class="center">Home</div>
+      </ons-toolbar>
+    
+      <ons-tabbar swipeable position="auto">
+        <ons-tab page="./views/t1home.html" label="Home" icon="ion-home, material:md-home" active>
+        </ons-tab>
+        <ons-tab page="./views/t2add.html" label="Adicionar" icon="md-plus" >
+        </ons-tab>
+        <ons-tab page="./views/t3contact.html" label="Contactar" icon="fa-envelope" >
+        </ons-tab>
+        <ons-tab page="./views/t4msg.html" label="Mensagens" icon="fa-envelope" >
+        </ons-tab>
+      </ons-tabbar>
+    </ons-page>
+  </ons-navigator>
+
+<script>
+  document.addEventListener('prechange', function(event) {
+    document.querySelector('ons-toolbar .center')
+      .innerHTML = event.tabItem.getAttribute('label');
+  });
+</script>
+
+</body>
+</html>

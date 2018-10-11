@@ -1,0 +1,49 @@
+<ons-page>
+  <p style="text-align: center;">
+      Contacte-nos:
+    </p>
+    <div style="text-align: center; margin-top: 30px;">
+        <p>
+          <ons-input id="cname" modifier="underbar" placeholder="Nome" float></ons-input>
+        </p>
+        <p>
+          <ons-input id="email" modifier="underbar" type="email" placeholder="Email" float></ons-input>
+        </p>
+        <p>
+        <textarea id="message" placeholder="message" float cols="30" rows="3"></textarea>
+        </p>
+        <small>
+        Todos os campos são obrigatórios
+        </small>
+        <p style="margin-top: 30px;">
+          <ons-button onclick="contact()">Enviar</ons-button>
+        </p>
+      </ons-input>
+    </div>
+             
+    
+  <script>
+    // contact
+    var contact = function() {
+      var name = document.getElementById('cname').value;
+      var email = document.getElementById('email').value;
+      var message = document.getElementById('message').value;
+
+      if (name && email && message) {
+        ons.notification.toast('Messagem enviada com sucesso!', { timeout: 1500 });
+      } else {
+        ons.notification.alert('Dados em falta ou incorrectos');
+      }
+      addToMessages(name, email, message);
+      name, email, message = '';
+    };
+
+    var addToMessages = function(name, email, message) {
+      var msgDiv = document.getElementById('messages');
+      msg = document.createElement("p");
+      msg.textContent = name + '; ' + email + '; ' + message;
+      msgDiv.appendChild(msg);
+    };  
+  </script>
+
+</ons-page>

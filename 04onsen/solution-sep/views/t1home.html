@@ -1,0 +1,34 @@
+<ons-page>
+  <ons-toolbar>
+    <div class="center">List</div>
+  </ons-toolbar>
+    
+  <ons-list>
+      <ons-list-header>Default</ons-list-header>
+      <ons-list-item onclick="customPush(event)">Item A</ons-list-item>
+      <ons-list-item onclick="customPush(event)">Item B</ons-list-item>
+  </ons-list>
+
+  <ons-fab position="bottom right" id="addBtn">
+      <ons-icon icon="md-plus"></ons-icon>
+  </ons-fab>
+
+
+  <script>
+    // change tab from fab btn
+      document.querySelector('#addBtn').onclick = function() {
+        document.querySelector('ons-tabbar').setActiveTab(1);
+      };
+  
+    
+
+    // navigator
+    var customPush = function (event) {
+      myNavigator.pushPage('./views/item.html') // ATTENTION: tem de der caminho desde a raiz (ficheiro index)
+    };
+
+  </script>
+
+</ons-page>
+
+

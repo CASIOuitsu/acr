@@ -13,7 +13,7 @@ node_modules
 # solutions
 #solution.*
 #solutions.*
-/04onsen/solution*
+#/04onsen/solution*
 /04onsen/trab*
 
 *.code-workspace

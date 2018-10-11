@@ -1,0 +1,47 @@
+<ons-page>
+  <p style="text-align: center;">
+      Adicionar Item
+  </p>
+  <div style="text-align: center; margin-top: 30px;">
+      <p>
+          <ons-input id="name" modifier="underbar" placeholder="Item name" float></ons-input>
+      </p>
+      <p style="margin-top: 30px;">
+          <ons-button onclick="addItem()">Adicionar</ons-button>
+          <!--ons-button id="addBtn2">Adicionar</ons-button-->
+        </p>
+      </ons-input>
+  </div> 
+             
+    
+  <script>
+    // add
+    var addItem = function() {
+      var name = document.getElementById('name');
+
+      if (name.value) {
+          ons.notification.toast('Item adcionado com sucesso!', { timeout: 1500 });
+      } else {
+          ons.notification.alert('Dados em falta ou incorrectos');
+      }
+      console.log(name.value);
+      addToList(name.value);
+      name.value='';
+      //$('#name').val(''); jquery
+      //document.getElementById('name').value='';
+    };
+
+    var addToList = function(name, email, message) {
+      var list = document.querySelector('ons-list');
+      item = document.createElement("ons-list-item");
+      item.textContent = name;
+      list.appendChild(item);
+    };
+
+    /*var addBtn2 = document.getElementById('addBtn2');
+    addBtn2.addEventListener('click', function (e) {
+      addItem(); // button or this
+    });*/    
+  </script>
+
+</ons-page>
