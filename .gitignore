@@ -15,6 +15,7 @@ node_modules
 #solutions.*
 #/04onsen/solution*
 /04onsen/trab*
+/05php/solutions.*
 
 *.code-workspace
 
