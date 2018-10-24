@@ -8,7 +8,8 @@ echo "I like " . $cars[0] . ", " . $cars[1] . " and " . $cars[2] . ".";
 
 echo "<br> length: " . count($cars) . "<br>";
 
-print_r($cars); // imprimir array
+print_r($cars); // imprimir array, simples
+var_dump($cars); // imprimir array, detalhes
 
 
 echo "<br>loop: ";
