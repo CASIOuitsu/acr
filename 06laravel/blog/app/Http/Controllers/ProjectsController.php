@@ -26,9 +26,16 @@ class ProjectsController extends Controller
 
     public function store() # recebe do form e guarda os dados na BD
     {
-        Project::create(request(['title', 'description']));  # apenas quando mesmo nome usado nas variaveis da view e na base de dados
+        $validated = request()->validate([
+            'title' => ['required', 'min:1', 'max:255'],
+            'description' => 'required'
+        ]);
+        #return $validated;
+
+        Project::create($validated); # $validated or attributes
+        #Project::create(request(['title', 'description']));  # apenas quando mesmo nome usado nas variaveis da view e na base de dados
         /* igual a
-        Project::create([ # atalho: obriga a usar o campo fillable ou guarded no model App\Project.php
+        Project::create([ # atalho create: obriga a usar o campo fillable ou guarded no model App\Project.php
             'title' => request('title'),
             'description' => request('description')
         ]);*/
@@ -37,7 +44,7 @@ class ProjectsController extends Controller
     }
 
 
-    public function storeAlt() # simples, sem atalhos
+    public function storeAlt()
     {
         #return request()->all();
         #return request('title');
@@ -53,4 +60,58 @@ class ProjectsController extends Controller
     }
 
 
+    public function show($id)
+    {
+        $project = Project::findOrFail($id);
+        #return $project;
+        return view('projects.show', compact('project'));  # compact ou ['project' => $project]
+    }
+
+
+    public function showAlt(Project $project)
+    {
+        return view('projects.show', compact('project')); # compact apenas quando mesmo nome
+    }
+
+
+    public function edit($id)
+    {
+        #return $id;
+        $project = Project::findOrFail($id);
+        return view('projects.edit', compact('project'));
+    }
+
+
+    public function update($id)
+    {
+        $project = Project::findOrFail($id);
+
+        $project->update(request(['title', 'description']));
+
+        return redirect('/projects');
+    }
+
+
+    public function updateAlt($id)
+    {
+        #dd('hi'); # debug, (die and dump)
+        ##dd(request()->all()); # debug, (die and dump)
+        $project = Project::findOrFail($id);
+
+        $project->title = request('title');
+        $project->description = request('description');
+
+        $project->save();
+
+        return redirect('/projects');
+    }
+
+
+    public function destroy($id)
+    {
+        $project = Project::findOrFail($id)->delete();
+        #$project->delete();
+
+        return redirect('/projects');
+    }
 }
