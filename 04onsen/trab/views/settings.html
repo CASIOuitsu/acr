@@ -1,0 +1,44 @@
+<ons-page>
+  <ons-list>
+      <ons-list-header>Settings</ons-list-header>
+      <ons-list-item>
+        <div class="center">
+          Funcionalidade 1: <span id="f1-status"> off</span>
+        </div>
+        <div class="right">
+          <ons-switch id="f1"></ons-switch>
+        </div>
+      </ons-list-item>
+      <ons-list-item>
+        <div class="center">
+          Funcionalidade 1.1: <span id="f2-status"> off</span>
+        </div>
+        <div class="right">
+          <ons-switch id="f2" disabled></ons-switch>
+        </div>
+      </ons-list-item>
+    </ons-list>
+
+<script>
+  // settings
+  document.getElementById('f1').addEventListener('change', function (event) {
+    if (event.value) {
+      document.getElementById('f1-status').innerHTML = `(on)`;
+      document.getElementById('f2').disabled = false;
+    } else {
+      document.getElementById('f1-status').innerHTML = `(off)`;
+      document.getElementById('f2').disabled = true;
+      document.getElementById('f2').checked = false;
+      document.getElementById('f2-status').innerHTML = `(off)`;
+    }
+  });
+  document.getElementById('f2').addEventListener('change', function (event) {
+    if (event.value) {
+      document.getElementById('f2-status').innerHTML = `(on)`;
+    } else {
+      document.getElementById('f2-status').innerHTML = `(off)`;
+    }
+  });
+</script>
+
+</ons-page>
