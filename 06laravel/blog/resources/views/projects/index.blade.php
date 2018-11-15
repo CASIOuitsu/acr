@@ -10,4 +10,9 @@
     </ul>
 
     <a href="/projects/create" class="button">add new</a>
+
+    <a href="/projects/first" class="button">First</a>
+
+    <a href="/projects/last" class="button">Last</a>
+
 @endsection

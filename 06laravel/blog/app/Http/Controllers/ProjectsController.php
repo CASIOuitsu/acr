@@ -114,4 +114,17 @@ class ProjectsController extends Controller
 
         return redirect('/projects');
     }
+
+    public function first()
+    {
+        $project = Project::all()->first(); # funciona sem all()
+        return view('projects.show', compact('project'));
+    }
+
+    public function last()
+    {
+        $project = Project::all()->last(); # tem de ter all()
+        return view('projects.show', compact('project'));
+    }
+
 }

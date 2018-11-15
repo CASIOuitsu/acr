@@ -18,7 +18,10 @@ Route::get('/contact', 'PagesController@contact');
     DELETE /projects/1 (destroy)
 */
 
+Route::get('/projects/first', 'ProjectsController@first');
+Route::get('/projects/last', 'ProjectsController@last');
 Route::resource('projects', 'ProjectsController');
+
 /* resource equivale a (uso de conventions/standards)
 Route::get('/projects', 'ProjectsController@index');
 Route::get('/projects/create', 'ProjectsController@create');
