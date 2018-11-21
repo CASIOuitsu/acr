@@ -44,7 +44,7 @@ class ProjectsController extends Controller
     }
 
 
-    public function storeAlt()
+    public function storeAlt() # maneira basica, sem atalhos
     {
         #return request()->all();
         #return request('title');
@@ -68,7 +68,7 @@ class ProjectsController extends Controller
     }
 
 
-    public function showAlt(Project $project)
+    public function showAlt(Project $project) # com argumento, reconhece pelo standard de ter o id no url/route
     {
         return view('projects.show', compact('project')); # compact apenas quando mesmo nome
     }
