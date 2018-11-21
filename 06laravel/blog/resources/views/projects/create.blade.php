@@ -6,11 +6,11 @@
     <form method="POST" action="/projects">
         {{ csrf_field() }}
         <div>
-        <input type="text" name="title" class="input {{ $errors->has('title') ? 'is-danger' : '' }}" placeholder="Project title" value="{{ old('title') }}" >
+        <input type="text" name="title" class="input {{ $errors->has('title') ? 'is-danger' : '' }}" placeholder="Project title" value="{{ old('title') }}" required>
         </div>
 
         <div>
-            <textarea name="description" placeholder="Project description" ></textarea>
+            <textarea name="description" placeholder="Project description" required></textarea>
         </div>
 
         <div>
