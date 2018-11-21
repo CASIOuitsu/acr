@@ -124,6 +124,7 @@ class ProjectsController extends Controller
     public function last()
     {
         $project = Project::all()->last(); # tem de ter all()
+        #$project = Project::last()->get(); # alternativa
         return view('projects.show', compact('project'));
     }
 
