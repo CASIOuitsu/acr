@@ -22,6 +22,10 @@ Route::get('/projects/first', 'ProjectsController@first');
 Route::get('/projects/last', 'ProjectsController@last');
 Route::resource('projects', 'ProjectsController');
 
+// Relationships
+Route::post('/projects/{project}/tasks', 'ProjectTasksController@store'); // or just tasks BUT with a hidden input with project id at the form
+Route::patch('/tasks/{task}', 'ProjectTasksController@update'); // or just TasksController
+
 /* resource equivale a (uso de conventions/standards)
 Route::get('/projects', 'ProjectsController@index');
 Route::get('/projects/create', 'ProjectsController@create');
